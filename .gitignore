@@ -1,0 +1,46 @@
+# Media containers & streams (never commit raw media)
+*.mkv
+*.mp4
+*.avi
+*.ts
+*.m2ts
+*.vob
+*.raw
+*.wav
+*.flac
+*.ac3
+*.dts
+*.dtshd
+*.eac3
+*.aac
+*.sup
+
+# Scratch & output directories
+tmp/
+output/
+temp/
+*.log
+
+# Python cache & environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# OS artifacts
+Thumbs.db
+Desktop.ini
+desktop.ini
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
