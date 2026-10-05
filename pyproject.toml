@@ -19,11 +19,76 @@ keywords = [
     "agent-skill",
     "antigravity"
 ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Video :: Conversion",
+]
 dependencies = [
     "numpy>=1.22.0",
     "scipy>=1.9.0",
     "soundfile>=0.12.0",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/chandler013/av-sync-suite"
+Repository = "https://github.com/chandler013/av-sync-suite"
+Issues = "https://github.com/chandler013/av-sync-suite/issues"
+
 [project.scripts]
 av-sync = "scripts.av_sync_cli:main"
+
+# ---------------------------------------------------------------------------
+# External binary requirements (not installable via pip)
+# ---------------------------------------------------------------------------
+# These system-level tools MUST be installed and on PATH (or at the Windows
+# fallback locations checked in scripts/utils.py) before running av-sync-suite.
+#
+# The [tool.*] namespace is ignored by pip/setuptools — it exists purely so
+# humans and AI agents can discover the requirements programmatically.
+# ---------------------------------------------------------------------------
+[tool.av-sync-suite.external-binaries]
+
+[tool.av-sync-suite.external-binaries.ffmpeg]
+binaries = ["ffmpeg", "ffprobe"]
+minimum-version = "5.0"
+homepage = "https://ffmpeg.org/"
+install-windows = "winget install Gyan.FFmpeg"
+install-mac = "brew install ffmpeg"
+install-linux = "sudo apt install ffmpeg"
+notes = "Used for media probing, thumbnail extraction, audio decoding/encoding, and AC-3 encoding."
+
+[tool.av-sync-suite.external-binaries.mkvtoolnix]
+binaries = ["mkvmerge", "mkvpropedit"]
+minimum-version = "70.0"
+homepage = "https://mkvtoolnix.download/"
+install-windows = "winget install MoritzBunkus.MKVToolNix"
+install-mac = "brew install mkvtoolnix"
+install-linux = "sudo apt install mkvtoolnix"
+notes = "Used for lossless MKV remuxing, track merging, metadata editing, and keyframe-accurate splitting."
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

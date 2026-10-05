@@ -1,3 +1,19 @@
+# ---------------------------------------------------------------------------
+# Python dependencies (pip-installable)
+# ---------------------------------------------------------------------------
 numpy>=1.22.0
 scipy>=1.9.0
 soundfile>=0.12.0
+
+# ---------------------------------------------------------------------------
+# External system binaries (NOT pip-installable — install separately)
+# ---------------------------------------------------------------------------
+# FFmpeg + FFprobe  >= 5.0   https://ffmpeg.org/
+#   Windows:  winget install Gyan.FFmpeg
+#   macOS:    brew install ffmpeg
+#   Linux:    sudo apt install ffmpeg
+#
+# MKVToolNix (mkvmerge + mkvpropedit)  >= 70.0   https://mkvtoolnix.download/
+#   Windows:  winget install MoritzBunkus.MKVToolNix
+#   macOS:    brew install mkvtoolnix
+#   Linux:    sudo apt install mkvtoolnix
